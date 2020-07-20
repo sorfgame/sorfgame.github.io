@@ -9884,6 +9884,10 @@ window.__require = function e(t, n, r) {
         this.item_count = 6;
         this.rv = 360 / this.item_count;
         this.startBtn.node.on("click", this.onClickStart, this);
+        if (cc.sys.platform === cc.sys.DESKTOP_BROWSER) {
+          cc.view.enableAutoFullScreen = false;
+          cc.view.setFrameSize(400, 800);
+        }
       },
       runWheel: function runWheel(value) {
         this.speed = 1;
@@ -9909,9 +9913,6 @@ window.__require = function e(t, n, r) {
         cc.tween(this.wheel).by(120, {
           angle: -360
         }).start();
-        _HttpClient["default"].send("http://119.29.159.115:8072/markClickNum", null, function(data) {
-          cc.log(data);
-        }, this);
       },
       update: function update(dt) {
         if (this.speed > 0) {
