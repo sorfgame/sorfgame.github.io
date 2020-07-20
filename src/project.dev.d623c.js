@@ -9885,8 +9885,10 @@ window.__require = function e(t, n, r) {
         this.rv = 360 / this.item_count;
         this.startBtn.node.on("click", this.onClickStart, this);
         if (cc.sys.platform === cc.sys.DESKTOP_BROWSER) {
-          cc.view.enableAutoFullScreen = false;
-          cc.view.setFrameSize(400, 800);
+          var widget = this.node.getComponent(cc.Widget);
+          widget.isAlignRight = false;
+          widget.isAlignLeft = false;
+          widget.updateAlignment();
         }
       },
       runWheel: function runWheel(value) {
